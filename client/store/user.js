@@ -28,9 +28,20 @@ export const me = () =>
         dispatch(getUser(res.data || defaultUser)))
       .catch(err => console.log(err))
 
-export const auth = (email, password, method) =>
+export const signup = (fullName, email, password) =>
   dispatch =>
-    axios.post(`/auth/${method}`, { email, password })
+    axios.post('/auth/signup', { fullName, email, password })
+      .then(res => {
+        dispatch(getUser(res.data))
+        history.push('/login')
+      }, authError => { // rare example: a good use case for parallel (non-catch) error handler
+        dispatch(getUser({error: authError}))
+      })
+      .catch(dispatchOrHistoryErr => console.error(dispatchOrHistoryErr))
+
+export const login = (email, password) =>
+  dispatch =>
+    axios.post('/auth/login', { email, password })
       .then(res => {
         dispatch(getUser(res.data))
         history.push('/home')
