@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import {AllArticles} from '../components'
+import {UserArticles} from '../components'
 
 /**
  * COMPONENT
@@ -13,6 +13,7 @@ export const UserHome = (props) => {
     <div>
       <h3>Hello, {name}</h3>
       <p>Here's the news based on your preferences</p>
+      <UserArticles />
     </div>
   )
 }
