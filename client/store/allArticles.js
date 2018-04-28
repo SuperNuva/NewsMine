@@ -1,5 +1,4 @@
 import axios from 'axios';
-// import newsapi from 'newsapi';
 const NewsAPI = require('newsapi');
 const newsapi = new NewsAPI('b2d066ad12f9498a978d5ca82f692a55');
 
@@ -17,10 +16,6 @@ const newsByCountry = (country) => {
     return `https://newsapi.org/v2/top-headlines?country=${country}&apiKey=b2d066ad12f9498a978d5ca82f692a55`
 }
 
-// const newsByCategory = (country, category) => {
-//     return 
-//     `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&apiKey=b2d066ad12f9498a978d5ca82f692a55`
-// }
 
 //Thunks
 export const fetchAllArticles = () => {
