@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { fetchAllArticles } from "../store/mainView";
+import { fetchAllArticles } from "../store/allArticles";
 import axios from "axios";
 
-class MainView extends Component {
+class AllArticles extends Component {
 
     componentDidMount() {
-        this.props.getTopArticlesUS();
+        this.props.getTopArticles();
     }
 
     render() {
@@ -54,10 +54,10 @@ const mapState = state => {
 
 const mapDispatch = dispatch => {
     return {
-        getTopArticlesUS: () => {
+        getTopArticles: () => {
             dispatch(fetchAllArticles())
         }
     }
 }
 
-export default connect(mapState, mapDispatch)(MainView)
+export default connect(mapState, mapDispatch)(AllArticles)

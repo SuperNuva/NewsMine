@@ -8,7 +8,7 @@ const GET_ALL_ARTICLES = 'GET_ALL_ARTICLES';
 
 
 //Action Creators
-export function getTopArticlesUS(articles) {
+export function getTopArticles(articles) {
     return {type: GET_ALL_ARTICLES, articles}
 }
 
@@ -33,7 +33,7 @@ export const fetchAllArticles = () => {
                 })
             .then(data => {
                     console.log("Articles!!", data.articles )
-                return dispatch(getTopArticlesUS(data.articles))
+                return dispatch(getTopArticles(data.articles))
             })
             .catch(console.error)
     }

@@ -9,10 +9,10 @@ export class ChoiceForm extends Component {
         this.state = {
             country : '',
             categories: [],
-            keywords: []
+            keywords: [],
         }
         this.handleSelectChange = this.handleSelectChange.bind(this)
-        this.handleCheckboxChange = this.handleCheckboxChange.bind(this)
+        this.handleMultipleChange = this.handleMultipleChange.bind(this)
         this.handleTextChange = this.handleTextChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
     }
@@ -24,8 +24,8 @@ export class ChoiceForm extends Component {
             .then(choices => {
                 this.setState({
                     country: choices.country,
-                    categories: choice.categories,
-                    keywords: choice.keywords
+                    categories: choices.categories,
+                    keywords: choices.keywords
                 })
             })
             .catch(console.error)
@@ -37,9 +37,11 @@ export class ChoiceForm extends Component {
         })
     }
 
-    handleCheckboxChange(e) {
+    handleMultipleChange(e) {
         this.setState({
-            categories: e.target.value,
+            categories:[].slice.call(e.target.selectedOptions).map(option => {
+                return option.value;
+            })
         })
     }
 
@@ -82,7 +84,7 @@ export class ChoiceForm extends Component {
                     <br />
                     <label>
                         select your categories
-                        <select multiple={true} value={this.state.categories} onChange={this.handleCheckboxChange}>
+                        <select multiple={true} value={this.state.categories} onChange={this.handleMultipleChange}>
                         {
                             ['business', 'entertainment', 'general', 'health', 'science', 'sports', 'technology'].map(category => {
                                 return (
