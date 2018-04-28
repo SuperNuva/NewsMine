@@ -32,7 +32,10 @@ const LoginForm = (props) => {
                     
                     <p className="forgot"><Link to="#">Forgot Password?</Link></p>
                     
+                    <div>
                     <button type="submit" className="button button-block">Log In</button>
+                    </div>
+                        {error && error.response && <div> {error.response.data} </div>}
                 </form>
             </div> 
         </div>
