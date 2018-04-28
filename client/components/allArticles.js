@@ -16,6 +16,7 @@ class AllArticles extends Component {
         if(this.props.articles) {
             return(
                 <div>
+                    <h1>Top headlines in the US</h1>
                     {
                         this.props.articles.map(article => {
                             return (
