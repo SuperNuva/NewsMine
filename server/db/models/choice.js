@@ -7,7 +7,7 @@ const Choice = db.define('choice', {
         allowNull: false
     },
 
-    category: {
+    categories: {
         type: Sequelize.ARRAY(Sequelize.STRING)
     },
 

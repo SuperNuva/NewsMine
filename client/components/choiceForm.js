@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+import axios from "axios";
 
 export class ChoiceForm extends Component {
     constructor(props){
@@ -10,13 +11,15 @@ export class ChoiceForm extends Component {
             categories: [],
             keywords: []
         }
-        this.handleChange = this.handleChange.bind(this)
+        this.handleSelectChange = this.handleSelectChange.bind(this)
+        this.handleCheckboxChange = this.handleCheckboxChange.bind(this)
+        this.handleTextChange = this.handleTextChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
     }
 
 
     submitChoices(choices) {
-        axios.post('/api/choices', choices)
+        axios.post('/api/choices/users/:userId', choices)
             .then(res => res.data)
             .then(choices => {
                 this.setState({
@@ -28,8 +31,22 @@ export class ChoiceForm extends Component {
             .catch(console.error)
     }
 
-    handleChange(e) {
-        this.setState({[e.taget.name]: e.target.value})
+    handleSelectChange(e) {
+        this.setState({
+            country: e.target.value,
+        })
+    }
+
+    handleCheckboxChange(e) {
+        this.setState({
+            categories: e.target.value,
+        })
+    }
+
+    handleTextChange(e) {
+        this.setState({
+            keywords: e.target.value.split(',')
+        })
     }
 
     handleSubmit(e) {
@@ -43,40 +60,40 @@ export class ChoiceForm extends Component {
     }
 
     render() {
+        console.log("STATE!!", this.state)
         return(
             <div>
-                <form>
+                <form onSubmit={this.handleSubmit}>
                     <label>
                         Select a country  
-                        <select>
-                            <option>Australia</option>
-                            <option>Brazil</option>
-                            <option>Canada</option>
-                            <option>China</option>
-                            <option>Germany</option>
-                            <option>India</option>
-                            <option>Korea, Republic of</option>
-                            <option>South Africa</option>
-                            <option>United Kingdom</option>
-                            <option>United States of America</option>
+                        <select name='country' value={this.state.country} onChange={this.handleSelectChange}>
+                            <option value="au">Australia</option>
+                            <option value="br">Brazil</option>
+                            <option value="ca">Canada</option>
+                            <option value="cn">China</option>
+                            <option value="de">Germany</option>
+                            <option value="in">India</option>
+                            <option value="kr">Korea, Republic of</option>
+                            <option value="za">South Africa</option>
+                            <option value="uk">United Kingdom</option>
+                            <option value="us">United States of America</option>
                         </select>
                     </label>
                     <br />
                     <label>
-                        Pick your categories
+                        select your categories
+                        <select multiple={true} value={this.state.categories} onChange={this.handleCheckboxChange}>
                         {
                             ['business', 'entertainment', 'general', 'health', 'science', 'sports', 'technology'].map(category => {
                                 return (
-                                    <div key={category}>
-                                        <label><input type="checkbox" name={category} />{category}
-                                        </label>
-                                    </div>
+                                    <option key={category} value={category}>{category}</option>
                                 )
                             })
                         }
+                        </select>
                     </label>
                     <label>What do you care about the most?
-                        <textarea value={this.state.value} onChange={this.handleChange} name='keywords'/>
+                        <textarea value={this.state.keywords} onChange={this.handleTextChange} name='keywords'/>
                     </label>
                     <br />
                     <button type="submit">Save</button>
