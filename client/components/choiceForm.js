@@ -83,7 +83,7 @@ class ChoiceForm extends Component {
                             <option value="in">India</option>
                             <option value="kr">Korea, Republic of</option>
                             <option value="za">South Africa</option>
-                            <option value="uk">United Kingdom</option>
+                            <option value="gb">United Kingdom</option>
                             <option value="us">United States of America</option>
                         </select>
                     </label>
