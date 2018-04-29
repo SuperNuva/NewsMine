@@ -1,6 +1,8 @@
 body {
-  background:  lightslategray;
+  /* background:  lightslategray; */
+  /* background-image: url('https://wallpapertag.com/wallpaper/full/d/f/b/302800-free-download-white-texture-background-3000x2000-full-hd.jpg'); */
   font-family: 'Titillium Web', sans-serif;
+  background: rgba(76, 175, 80, 0.3);
 }
 
 .form {
@@ -47,7 +49,7 @@ body {
 
 #login h1 {
   text-align:center;
-  color: white;
+  color: black;
   font-weight:300;
   margin:0 0 40px;
 }
@@ -138,4 +140,46 @@ textarea {
 .forgot {
   margin-top:20px;
   text-align:center;
+}
+
+#choiceLabel {
+  font-size: 20px;
+  font-family: 'Titillium Web', sans-serif;
+}
+
+.saveButton {
+  position: absolute;
+  width: 10%;
+  left: 42%;
+  border:0;
+  outline:none;
+  border-radius:0;
+  padding:15px 0;
+  font-size:1.5rem;
+  font-weight:300;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  background: darkcyan;
+  color:#ffffff;
+  transition:all.5s ease;
+  -webkit-appearance: none;
+  cursor: pointer;
+  margin: 20px
+}
+.saveButton:hover {
+  background:darkblue;
+}
+
+select, textarea {
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 15px;
+  color: maroon;
+  background-color: lightgoldenrodyellow;
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
