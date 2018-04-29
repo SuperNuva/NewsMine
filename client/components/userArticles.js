@@ -19,7 +19,6 @@ class UserArticles extends Component {
         // this.state.categories.forEach(category => {
         //     return this.props.getArticlesByCategory(category, this.state.country)
         // })
-        this.props.getArticlesByCategory(this.state.categories[0], this.state.country);
         // this.props.getArticlesByKeyword();
     }
 
@@ -53,14 +52,25 @@ class UserArticles extends Component {
         if(this.props.articlesByCategory){
             return (
                 <div>
-                    <UserNav categories={this.state.categories}/>
-                    <h1>Articles By Category</h1>
+                <button onClick={() => this.props.getArticlesByCategory(this.state.categories[0], this.state.country)}>Get Top Headlines in {this.state.categories[0]}</button>
                     {
                         this.props.articlesByCategory.map(article => {
                             return(
                                 <div key={article.url}>
+                                {
+                                    !article.urlToImage
+                                    ? <img src='https://s3.ap-south-1.amazonaws.com/iquppo-image-upload/assets/uploads/1515132916591/QW_BB_2002_1_3.png'/>
+                                    : <img src={article.urlToImage}/>
+                                }
                                 <h3>{article.title}</h3>
-                                </div>
+                                <p>{article.description}</p>
+                                {
+                                    !article.author
+                                    ? <h5>{article.source.name}</h5>
+                                    : <h5>{article.author}, {article.source.name}</h5>
+                                }
+                                <a href={article.url}><h4>Read full article...</h4></a>
+                            </div>
                             )
                         })
                     }

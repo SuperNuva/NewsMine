@@ -41,8 +41,7 @@ class AllArticles extends Component {
         if(this.props.articles) {
             return(
                 <div>
-                    <h1>Top headlines in the US</h1>
-                    <button onClick={() => this.props.getTopArticles(this.state.country)}>click me!</button>
+                    <button onClick={() => this.props.getTopArticles(this.state.country)}>Get Top Headlines in Your Country</button>
                     {
                         this.props.articles.map(article => {
                             return (
