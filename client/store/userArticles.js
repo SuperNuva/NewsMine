@@ -1,11 +1,16 @@
 import axios from 'axios';
 
 //Action Types
+const GET_ALL_ARTICLES = 'GET_ALL_ARTICLES';
 const GET_ARTICLES_BY_CATEGORY = 'GET_ARTICLES_BY_CATEGORY';
 const GET_ARTICLES_BY_KEYWORD =
 'GET_ARTICLES_BY_KEYWORD'
 
 //Action Creators
+export function getTopArticles(articles) {
+    return {type: GET_ALL_ARTICLES, articles}
+}
+
 export function getArticlesByCategory(articlesByCategory) {
     return {type: GET_ARTICLES_BY_CATEGORY, articlesByCategory}
 }
@@ -21,6 +26,10 @@ const newsByCategory = (category, country) => {
 
 const newsByKeyword = (keyword) => {
     return `https://newsapi.org/v2/top-headlines?q=${keyword}&apiKey=b2d066ad12f9498a978d5ca82f692a55`
+}
+
+const newsByCountry = (country) => {
+    return `https://newsapi.org/v2/top-headlines?country=${country}&apiKey=b2d066ad12f9498a978d5ca82f692a55`
 }
 
 //Thunks
@@ -49,7 +58,33 @@ export const fetchArticlesByKeyword = (keyword) => {
     }
 }
 
+export const fetchAllArticles = (country) => {
+    return dispatch => {
+        axios.get(newsByCountry(country))
+            .then(response => 
+                {
+                    console.log("response data!!", response.data)
+                    return response.data
+                })
+            .then(data => {
+                    console.log("Articles!!", data.articles )
+                return dispatch(getTopArticles(data.articles))
+            })
+            .catch(console.error)
+    }
+}
+
 //Reducer
+export function newsReducer(articles=[], action) {
+    switch(action.type) {
+        case GET_ALL_ARTICLES:
+            articles = action.articles
+            return articles
+        default:
+            return articles
+    }
+}
+
 export function articlesByCatReducer(articlesByCategory=[], action) {
     switch(action.type) {
         case GET_ARTICLES_BY_CATEGORY:

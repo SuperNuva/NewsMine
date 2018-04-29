@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchArticlesByCategory, fetchChoices, fetchArticlesByKeyword } from '../store/userArticles'
+import { fetchArticlesByCategory, fetchChoices, fetchArticlesByKeyword, fetchAllArticles } from '../store/userArticles'
 import axios from "axios";
-import { UserNav } from "./userNav";
 import { Link } from "react-router-dom";
 
 class UserArticles extends Component {
@@ -37,6 +36,30 @@ class UserArticles extends Component {
 
         return (
             <div>
+            {
+                this.state.country && <button onClick={() => this.props.getTopArticles(this.state.country)}>Get Top Headlines in Your Country</button>
+            }
+                {
+                    this.props.articles.map(article => {
+                        return (
+                        <div key={article.url}>
+                            {
+                                !article.urlToImage
+                                ? <img src='https://s3.ap-south-1.amazonaws.com/iquppo-image-upload/assets/uploads/1515132916591/QW_BB_2002_1_3.png'/>
+                                : <img src={article.urlToImage}/>
+                            }
+                            <h3>{article.title}</h3>
+                            <p>{article.description}</p>
+                            {
+                                !article.author
+                                ? <h5>{article.source.name}</h5>
+                                : <h5>{article.author}, {article.source.name}</h5>
+                            }
+                            <a href={article.url}><h4>Read full article...</h4></a>
+                        </div>
+                        )
+                    })
+                }
             {
                 this.state.categories.includes('health') && <button onClick={() => this.props.getArticlesByCategory('health', this.state.country)}>Get Top Headlines in health</button>
             }
@@ -77,7 +100,6 @@ class UserArticles extends Component {
                         )
                     })
                 }
-                <hr />
                 {
                     this.state.keywords[0] && <button onClick={() => this.props.getArticlesByKeyword(this.state.keywords[0])}>Get Top Headlines about {this.state.keywords[0]}</button>
                 } 
@@ -109,6 +131,7 @@ class UserArticles extends Component {
 
 const mapState = state => {
     return {
+        articles: state.articles,
         articlesByCategory: state.articlesByCategory,
         articlesByKeyword: state.articlesByKeyword,
         user: state.user
@@ -119,6 +142,9 @@ const mapDispatch = dispatch => {
     return {
         getChoices: () => {
             dispatch(fetchChoices())
+        },
+        getTopArticles: (country) => {
+            dispatch(fetchAllArticles(country))
         },
         getArticlesByCategory: (category, country) => {
             dispatch(fetchArticlesByCategory(category, country))
