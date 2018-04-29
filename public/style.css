@@ -1,7 +1,7 @@
 body {
   /* background:  lightslategray; */
   /* background-image: url('https://wallpapertag.com/wallpaper/full/d/f/b/302800-free-download-white-texture-background-3000x2000-full-hd.jpg'); */
-  font-family: 'Titillium Web', sans-serif;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   background: rgba(76, 175, 80, 0.3);
 }
 
@@ -144,7 +144,7 @@ textarea {
 
 #choiceLabel {
   font-size: 20px;
-  font-family: 'Titillium Web', sans-serif;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .saveButton {
@@ -171,7 +171,7 @@ textarea {
 }
 
 select, textarea {
-  font-family: 'Titillium Web', sans-serif;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-size: 15px;
   color: maroon;
   background-color: lightgoldenrodyellow;
@@ -182,4 +182,56 @@ select, textarea {
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
+}
+
+#nav {
+  float: top;
+}
+
+.navLink {
+  display: inline;
+  color: darkblue;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 20px
+}
+
+/* Change the link color to #111 (black) on hover */
+.navLink:hover {
+    background-color: lightgoldenrodyellow;
+}
+
+#userHome {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color: darkgreen
+}
+
+.logo {
+  display: block;
+  color: purple;
+  text-decoration: none;
+}
+
+#icon {
+  padding: 14px 16px;
+}
+
+.newsButton {
+  border-radius:0;
+  padding:15px 15px;
+  margin: 15px 15px;
+  font-size:1rem;
+  font-weight:300;
+  cursor: pointer;
+}
+
+.articles img {
+  height: 150px;
+}
+
+.articles {
+  font-size: 15px;
+  padding: 10px;
 }

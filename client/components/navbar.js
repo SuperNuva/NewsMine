@@ -6,14 +6,14 @@ import {logout} from '../store'
 
 const Navbar = ({ handleClick, isLoggedIn }) => (
   <div>
-    <h1>NewsMine</h1>
+    <Link to='/home'  className="logo"><i id="icon" className="far fa-newspaper fa-3x">NewsMine</i></Link>
     <nav>
       {isLoggedIn &&  
-        <div>
+        <div id="nav">
           {/* The navbar will show these links after you log in */}
-          <Link to="/home">Home</Link>
-          <Link to="/account-settings">My Account</Link>
-          <Link to="#" onClick={handleClick}>Logout</Link>
+          <Link to="/home" className="navLink">Home</Link>
+          <Link to="/account-settings" className="navLink">My Account</Link>
+          <Link to="#" onClick={handleClick} className="navLink">Logout</Link>
         </div>
       }
     </nav>

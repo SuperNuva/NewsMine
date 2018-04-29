@@ -10,7 +10,10 @@ class UserArticles extends Component {
         this.state = {
             country: '',
             categories: [],
-            keywords: []
+            keywords: [],
+            isCountryClicked: false,
+            isCategoryCLicked: false,
+            isKeywordClicked: false,
         }
     }
     componentDidMount() {
@@ -29,6 +32,7 @@ class UserArticles extends Component {
         )
     }
 
+
     render() {
         console.log("PROPS!!", this.props)
         console.log("STATE", this.state)
@@ -37,76 +41,53 @@ class UserArticles extends Component {
         return (
             <div>
             {
-                this.state.country && <button onClick={() => this.props.getTopArticles(this.state.country)}>Get Top Headlines in Your Country</button>
-            }
-                {
-                    this.props.articles.map(article => {
-                        return (
-                        <div key={article.url}>
-                            {
-                                !article.urlToImage
-                                ? <img src='https://s3.ap-south-1.amazonaws.com/iquppo-image-upload/assets/uploads/1515132916591/QW_BB_2002_1_3.png'/>
-                                : <img src={article.urlToImage}/>
-                            }
-                            <h3>{article.title}</h3>
-                            <p>{article.description}</p>
-                            {
-                                !article.author
-                                ? <h5>{article.source.name}</h5>
-                                : <h5>{article.author}, {article.source.name}</h5>
-                            }
-                            <a href={article.url}><h4>Read full article...</h4></a>
-                        </div>
-                        )
-                    })
-                }
-            {
-                this.state.categories.includes('health') && <button onClick={() => this.props.getArticlesByCategory('health', this.state.country)}>Get Top Headlines in health</button>
+                this.state.country && <button className="newsButton" onClick={() => {this.props.getTopArticles(this.state.country); this.setState({isCategoryCLicked: false, isCountryClicked: true, isKeywordClicked: false})}}>Get Top Headlines in Your Country</button>
             }
             {
-                this.state.categories.includes('entertainment') && <button onClick={() => this.props.getArticlesByCategory('entertainment', this.state.country)}>Get Top Headlines in entertainment</button>
+                this.state.categories.includes('health') && <button className="newsButton" onClick={() => {this.props.getArticlesByCategory('health', this.state.country); this.setState({isCategoryCLicked: true, isCountryClicked: false, isKeywordClicked: false})}}>Get Top Headlines in health</button>
             }
             {
-                this.state.categories.includes('technology') && <button onClick={() => this.props.getArticlesByCategory('technology', this.state.country)}>Get Top Headlines in technology</button>
+                this.state.categories.includes('entertainment') && <button className="newsButton" onClick={() => {this.props.getArticlesByCategory('entertainment', this.state.country); this.setState({isCategoryCLicked: true, isCountryClicked: false, isKeywordClicked: false})}}>Get Top Headlines in entertainment</button>
             }
             {
-                this.state.categories.includes('science') && <button onClick={() => this.props.getArticlesByCategory('science', this.state.country)}>Get Top Headlines in science</button>
+                this.state.categories.includes('technology') && <button className="newsButton" oonClick={() => {this.props.getArticlesByCategory('technology', this.state.country); this.setState({isCategoryCLicked: true, isCountryClicked: false, isKeywordClicked: false})}}>Get Top Headlines in technology</button>
             }
             {
-                this.state.categories.includes('sports') && <button onClick={() => this.props.getArticlesByCategory('sports', this.state.country)}>Get Top Headlines in sports</button>
+                this.state.categories.includes('science') && <button className="newsButton" onClick={() => {this.props.getArticlesByCategory('science', this.state.country); this.setState({isCategoryCLicked: true, isCountryClicked: false, isKeywordClicked: false})}}>Get Top Headlines in science</button>
             }
             {
-                this.state.categories.includes('business') && <button onClick={() => this.props.getArticlesByCategory('business', this.state.country)}>Get Top Headlines in business</button>
+                this.state.categories.includes('sports') && <button className="newsButton" onClick={() => {this.props.getArticlesByCategory('sports', this.state.country); this.setState({isCategoryCLicked: true, isCountryClicked: false, isKeywordClicked: false})}}>Get Top Headlines in sports</button>
             }
+            {
+                this.state.categories.includes('business') && <button className="newsButton" onClick={() => {this.props.getArticlesByCategory('business', this.state.country); this.setState({isCategoryCLicked: true, isCountryClicked: false, isKeywordClicked: false})}}>Get Top Headlines in business</button>
+            }
+            {
+                this.state.keywords[0] && <button className="newsButton" onClick={() => {this.props.getArticlesByKeyword(this.state.keywords[0]); this.setState({isCategoryCLicked: false, isCountryCLicked: false, isKeywordClicked: true})}}>Get Top Headlines about {this.state.keywords[0]}</button>
+            } 
             
                 {
-                    this.props.articlesByCategory.map(article => {
-                        return(
-                            <div key={article.url}>
+                    this.state.isCountryClicked &&
+                    this.props.articles.map(article => {
+                        return (
+                        <div className="articles" key={article.url}>
                             {
                                 !article.urlToImage
                                 ? <img src='https://s3.ap-south-1.amazonaws.com/iquppo-image-upload/assets/uploads/1515132916591/QW_BB_2002_1_3.png'/>
                                 : <img src={article.urlToImage}/>
                             }
-                            <h3>{article.title}</h3>
+                            <h3 style={{color: 'maroon'}}>{article.title}, {article.source.name}</h3>
                             <p>{article.description}</p>
-                            {
-                                !article.author
-                                ? <h5>{article.source.name}</h5>
-                                : <h5>{article.author}, {article.source.name}</h5>
-                            }
-                            <a href={article.url}><h4>Read full article...</h4></a>
+                            <a className="newsLink" href={article.url}><h4>Read full article...</h4></a>
                         </div>
                         )
                     })
                 }
+            
                 {
-                    this.state.keywords[0] && <button onClick={() => this.props.getArticlesByKeyword(this.state.keywords[0])}>Get Top Headlines about {this.state.keywords[0]}</button>
-                } 
-                {
-                    this.props.articlesByKeyword.map(article => {
+                    this.state.isCategoryCLicked &&
+                    this.props.articlesByCategory.map(article => {
                         return(
-                            <div key={article.url}>
+                            <div className="articles" key={article.url}>
                             {
                                 !article.urlToImage
                                 ? <img src='https://s3.ap-south-1.amazonaws.com/iquppo-image-upload/assets/uploads/1515132916591/QW_BB_2002_1_3.png'/>
@@ -119,7 +100,30 @@ class UserArticles extends Component {
                                 ? <h5>{article.source.name}</h5>
                                 : <h5>{article.author}, {article.source.name}</h5>
                             }
-                            <a href={article.url}><h4>Read full article...</h4></a>
+                            <a className="newsLink" href={article.url}><h4>Read full article...</h4></a>
+                        </div>
+                        )
+                    })
+                }
+                
+                {
+                    this.state.isKeywordClicked &&
+                    this.props.articlesByKeyword.map(article => {
+                        return(
+                            <div className="articles" key={article.url}>
+                            {
+                                !article.urlToImage
+                                ? <img src='https://s3.ap-south-1.amazonaws.com/iquppo-image-upload/assets/uploads/1515132916591/QW_BB_2002_1_3.png'/>
+                                : <img src={article.urlToImage}/>
+                            }
+                            <h3>{article.title}</h3>
+                            <p>{article.description}</p>
+                            {
+                                !article.author
+                                ? <h5>{article.source.name}</h5>
+                                : <h5>{article.author}, {article.source.name}</h5>
+                            }
+                            <a className="newsLink" href={article.url}><h4>Read full article...</h4></a>
                         </div>
                         )
                     })
