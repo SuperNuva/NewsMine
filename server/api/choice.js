@@ -8,17 +8,17 @@ router.get('/', (req, res, next) => {
     .catch(next)
 })
 
-router.get('/:id', (req, res, next) => {
+router.get('/users/:userId', (req, res, next) => {
     Choice.findOne({
         where: {
-            id: req.params.id
+            userId: req.params.userId
         }
     })
     .then(choices => res.json(choices))
     .catch(next)
 })
 
-router.post('/:id', (req, res, next) => {
+router.post('/users/:userId', (req, res, next) => {
     // User.findById(req.params.userId)
     //     .then(user => user.getChoice())
     //     .then(choices => {
@@ -26,7 +26,11 @@ router.post('/:id', (req, res, next) => {
     //     })
     //     .then(choices => res.json(choices))
     //     .catch(next)
-    Choice.create(req.body)
+    Choice.create(req.body, {
+        where: {
+            userId: req.params.userId
+        }
+    })
     .then(choices => res.json(choices))
     .catch(next)     
 })

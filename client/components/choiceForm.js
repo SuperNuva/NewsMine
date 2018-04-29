@@ -20,7 +20,7 @@ class ChoiceForm extends Component {
 
 
     submitChoices(choices) {
-        axios.post('/api/choices/:id', choices)
+        axios.post(`/api/choices/users/${this.props.user.id}`, choices)
             .then(res => res.data)
             .then(choices => {
                 this.setState({

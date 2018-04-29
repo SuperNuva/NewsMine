@@ -1,16 +1,37 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchArticlesByCategory } from '../store/userArticles'
+import { fetchArticlesByCategory, fetchChoices } from '../store/userArticles'
+import axios from "axios";
 
 class UserArticles extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            country: '',
+            categories: [],
+            keywords: []
+        }
+    }
     componentDidMount() {
+        this.getChoices();
         this.props.getArticlesByCategory();
         // this.props.getArticlesByKeyword();
     }
 
+    getChoices() {
+        axios.get(`/api/choices/users/${this.props.user.id}`)
+            .then(res => res.data)
+            .then(choices => this.setState({
+                country: choices.country,
+                categories: choices.categories,
+                keywords: choices.keywords
+            })
+        )
+    }
+
     render() {
         console.log("PROPS!!", this.props)
-        console.log("state articles!!", this.props.articlesByCategory)
+        console.log("STATE", this.state)
         if(this.props.articlesByCategory){
             return (
                 <div>
@@ -36,6 +57,7 @@ const mapState = state => {
     return {
         articlesByCategory: state.articlesByCategory,
         articlesByKeyword: state.articlesByKeyword,
+        user: state.user
         // categories: state.categories,
         // Keywords: state.Keywords
     }
@@ -43,6 +65,9 @@ const mapState = state => {
 
 const mapDispatch = dispatch => {
     return {
+        getChoices: () => {
+            dispatch(fetchChoices())
+        },
         getArticlesByCategory: () => {
             dispatch(fetchArticlesByCategory('health', 'us'))
         },
