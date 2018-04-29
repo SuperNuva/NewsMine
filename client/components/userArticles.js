@@ -12,7 +12,7 @@ class UserArticles extends Component {
             categories: [],
             keywords: [],
             isCountryClicked: false,
-            isCategoryCLicked: false,
+            isCategoryClicked: false,
             isKeywordClicked: false,
         }
     }
@@ -41,28 +41,28 @@ class UserArticles extends Component {
         return (
             <div>
             {
-                this.state.country && <button className="newsButton" onClick={() => {this.props.getTopArticles(this.state.country); this.setState({isCategoryCLicked: false, isCountryClicked: true, isKeywordClicked: false})}}>Get Top Headlines in Your Country</button>
+                this.state.country && <button className="newsButton" onClick={() => {this.props.getTopArticles(this.state.country); this.setState({isCategoryClicked: false, isCountryClicked: true, isKeywordClicked: false})}}>Get Top Headlines in Your Country</button>
             }
             {
-                this.state.categories.includes('health') && <button className="newsButton" onClick={() => {this.props.getArticlesByCategory('health', this.state.country); this.setState({isCategoryCLicked: true, isCountryClicked: false, isKeywordClicked: false})}}>Get Top Headlines in health</button>
+                this.state.categories.includes('health') && <button className="newsButton" onClick={() => {this.props.getArticlesByCategory('health', this.state.country); this.setState({isCategoryClicked: true, isCountryClicked: false, isKeywordClicked: false})}}>Get Top Headlines in health</button>
             }
             {
-                this.state.categories.includes('entertainment') && <button className="newsButton" onClick={() => {this.props.getArticlesByCategory('entertainment', this.state.country); this.setState({isCategoryCLicked: true, isCountryClicked: false, isKeywordClicked: false})}}>Get Top Headlines in entertainment</button>
+                this.state.categories.includes('entertainment') && <button className="newsButton" onClick={() => {this.props.getArticlesByCategory('entertainment', this.state.country); this.setState({isCategoryClicked: true, isCountryClicked: false, isKeywordClicked: false})}}>Get Top Headlines in entertainment</button>
             }
             {
-                this.state.categories.includes('technology') && <button className="newsButton" oonClick={() => {this.props.getArticlesByCategory('technology', this.state.country); this.setState({isCategoryCLicked: true, isCountryClicked: false, isKeywordClicked: false})}}>Get Top Headlines in technology</button>
+                this.state.categories.includes('technology') && <button className="newsButton" onClick={() => {this.props.getArticlesByCategory('technology', this.state.country); this.setState({isCategoryClicked: true, isCountryClicked: false, isKeywordClicked: false})}}>Get Top Headlines in technology</button>
             }
             {
-                this.state.categories.includes('science') && <button className="newsButton" onClick={() => {this.props.getArticlesByCategory('science', this.state.country); this.setState({isCategoryCLicked: true, isCountryClicked: false, isKeywordClicked: false})}}>Get Top Headlines in science</button>
+                this.state.categories.includes('science') && <button className="newsButton" onClick={() => {this.props.getArticlesByCategory('science', this.state.country); this.setState({isCategoryClicked: true, isCountryClicked: false, isKeywordClicked: false})}}>Get Top Headlines in science</button>
             }
             {
-                this.state.categories.includes('sports') && <button className="newsButton" onClick={() => {this.props.getArticlesByCategory('sports', this.state.country); this.setState({isCategoryCLicked: true, isCountryClicked: false, isKeywordClicked: false})}}>Get Top Headlines in sports</button>
+                this.state.categories.includes('sports') && <button className="newsButton" onClick={() => {this.props.getArticlesByCategory('sports', this.state.country); this.setState({isCategoryClicked: true, isCountryClicked: false, isKeywordClicked: false})}}>Get Top Headlines in sports</button>
             }
             {
-                this.state.categories.includes('business') && <button className="newsButton" onClick={() => {this.props.getArticlesByCategory('business', this.state.country); this.setState({isCategoryCLicked: true, isCountryClicked: false, isKeywordClicked: false})}}>Get Top Headlines in business</button>
+                this.state.categories.includes('business') && <button className="newsButton" onClick={() => {this.props.getArticlesByCategory('business', this.state.country); this.setState({isCategoryClicked: true, isCountryClicked: false, isKeywordClicked: false})}}>Get Top Headlines in business</button>
             }
             {
-                this.state.keywords[0] && <button className="newsButton" onClick={() => {this.props.getArticlesByKeyword(this.state.keywords[0]); this.setState({isCategoryCLicked: false, isCountryCLicked: false, isKeywordClicked: true})}}>Get Top Headlines about {this.state.keywords[0]}</button>
+                this.state.keywords[0] && <button className="newsButton" onClick={() => {this.props.getArticlesByKeyword(this.state.keywords[0]); this.setState({isCategoryClicked: false, isCountryClicked: false, isKeywordClicked: true})}}>Get Top Headlines about {this.state.keywords[0]}</button>
             } 
             
                 {
@@ -84,7 +84,7 @@ class UserArticles extends Component {
                 }
             
                 {
-                    this.state.isCategoryCLicked &&
+                    this.state.isCategoryClicked &&
                     this.props.articlesByCategory.map(article => {
                         return(
                             <div className="articles" key={article.url}>
