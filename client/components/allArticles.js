@@ -13,9 +13,7 @@ class AllArticles extends Component {
             keywords: []
         }
     }
-    // componentWillMount() {
-        
-    // }
+
     componentDidMount() {
         this.getChoices();
         console.log("STATE!!!", this.state)
@@ -34,10 +32,6 @@ class AllArticles extends Component {
     }
 
     render() {
-        // console.log("PROPS!!", this.props)
-        console.log("ALL-NEWS STATE", this.state)
-        // console.log("articles!!", this.props.articles)
-        // console.log("COUNTRY", this.state.country)
         if(this.props.articles) {
             return(
                 <div>

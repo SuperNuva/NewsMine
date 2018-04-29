@@ -10,8 +10,8 @@ export function getArticlesByCategory(articlesByCategory) {
     return {type: GET_ARTICLES_BY_CATEGORY, articlesByCategory}
 }
 
-export function getArticlesByKeyword(articleByKeyword) {
-    return {type: GET_ARTICLES_BY_KEYWORD, articleByKeyword}
+export function getArticlesByKeyword(articlesByKeyword) {
+    return {type: GET_ARTICLES_BY_KEYWORD, articlesByKeyword}
 }
 
 //Helper Function
@@ -40,6 +40,14 @@ export const fetchArticlesByCategory = (category, country) => {
     }
 }
 
+export const fetchArticlesByKeyword = (keyword) => {
+    return dispatch => {
+        axios.get(newsByKeyword(keyword))
+        .then(res => res.data)
+        .then(data => dispatch(getArticlesByKeyword(data.articles)))
+        .catch(console.error)
+    }
+}
 
 //Reducer
 export function articlesByCatReducer(articlesByCategory=[], action) {
@@ -48,5 +56,14 @@ export function articlesByCatReducer(articlesByCategory=[], action) {
             return action.articlesByCategory
         default:
             return articlesByCategory
+    }
+}
+
+export function articlesByKeyReducer(articlesByKeyword=[], action) {
+    switch(action.type) {
+        case GET_ARTICLES_BY_KEYWORD:
+            return action.articlesByKeyword
+        default:
+            return articlesByKeyword
     }
 }
