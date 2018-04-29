@@ -2,13 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {UserArticles} from '../components'
+import { UserNav } from './userNav';
 
 /**
  * COMPONENT
  */
 export const UserHome = (props) => {
   const {email, name} = props
-
   return (
     <div>
       <h3>Hello, {name}</h3>

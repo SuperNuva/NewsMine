@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchArticlesByCategory, fetchChoices } from '../store/userArticles'
 import axios from "axios";
+import { UserNav } from "./userNav";
+import { Link } from "react-router-dom";
 
 class UserArticles extends Component {
     constructor(props) {
@@ -14,7 +16,10 @@ class UserArticles extends Component {
     }
     componentDidMount() {
         this.getChoices();
-        this.props.getArticlesByCategory();
+        // this.state.categories.forEach(category => {
+        //     return this.props.getArticlesByCategory(category, this.state.country)
+        // })
+        this.props.getArticlesByCategory(this.state.categories[0], this.state.country);
         // this.props.getArticlesByKeyword();
     }
 
@@ -32,9 +37,23 @@ class UserArticles extends Component {
     render() {
         console.log("PROPS!!", this.props)
         console.log("STATE", this.state)
+        // return(
+        //     <div>
+        //     {
+        //         this.state.categories.forEach(category => {
+        //             return (
+        //                 <Link to={`/home/${category}`}>{category}</Link>
+        //             )
+        //         })
+        //     }
+        //     </div>
+        // )
+        
+
         if(this.props.articlesByCategory){
             return (
                 <div>
+                    <UserNav categories={this.state.categories}/>
                     <h1>Articles By Category</h1>
                     {
                         this.props.articlesByCategory.map(article => {
@@ -68,8 +87,8 @@ const mapDispatch = dispatch => {
         getChoices: () => {
             dispatch(fetchChoices())
         },
-        getArticlesByCategory: () => {
-            dispatch(fetchArticlesByCategory('health', 'us'))
+        getArticlesByCategory: (category, country) => {
+            dispatch(fetchArticlesByCategory(category, country))
         },
         // getArticlesByKeyword: () => {
         //     dispatch(fetchArticlesByKeyword())

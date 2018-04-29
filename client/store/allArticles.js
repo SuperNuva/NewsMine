@@ -18,9 +18,9 @@ const newsByCountry = (country) => {
 
 
 //Thunks
-export const fetchAllArticles = () => {
+export const fetchAllArticles = (country) => {
     return dispatch => {
-        axios.get(newsByCountry('us'))
+        axios.get(newsByCountry(country))
             .then(response => 
                 {
                     console.log("response data!!", response.data)
