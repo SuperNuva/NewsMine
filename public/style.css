@@ -228,7 +228,8 @@ select, textarea {
 }
 
 .articles img {
-  height: 150px;
+  height: 400px;
+  width: 600px;
 }
 
 .articles {
