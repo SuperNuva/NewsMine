@@ -236,3 +236,8 @@ select, textarea {
   font-size: 15px;
   padding: 10px;
 }
+
+.form.prompt {
+  color: green;
+  border: solid black
+}

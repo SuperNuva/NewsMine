@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import axios from "axios";
+import { SSL_OP_ALLOW_UNSAFE_LEGACY_RENEGOTIATION } from 'constants';
 
 class ChoiceForm extends Component {
     constructor(props){
@@ -70,12 +71,13 @@ class ChoiceForm extends Component {
         console.log("PROPS!!", this.props)
         return(
             <div className="form">
-                <div className="alert">{this.state.message}</div>
+                <div style={{color: 'green', margin:'10px'}}>{this.state.message}</div>
                 <form onSubmit={this.handleSubmit}>
                     <div className="select-style">
                         <label id="choiceLabel">
                             Select a Country  
                             <select className="select" name='country' value={this.state.country} onChange={this.handleSelectChange}>
+                                <option default>Select...</option>
                                 <option value="au">Australia</option>
                                 <option value="br">Brazil</option>
                                 <option value="ca">Canada</option>
