@@ -92,7 +92,7 @@ class ChoiceForm extends Component {
                         select your categories
                         <select multiple={true} value={this.state.categories} onChange={this.handleMultipleChange}>
                         {
-                            ['business', 'entertainment', 'general', 'health', 'science', 'sports', 'technology'].map(category => {
+                            ['business', 'entertainment', 'health', 'science', 'sports', 'technology'].map(category => {
                                 return (
                                     <option key={category} value={category}>{category}</option>
                                 )

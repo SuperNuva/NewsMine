@@ -8,7 +8,6 @@ import {UserArticles} from '../components'
  */
 export const UserHome = (props) => {
   const {email, name} = props
-
   return (
     <div>
       <h3>Hello, {name}</h3>

@@ -29,7 +29,6 @@ class Routes extends Component {
               <Route exact path="/" component={UserHome} />
               <Route exact path="/home" component={UserHome} />
               <Route exact path="/account-settings" />
-              <Route exact path="/top-news" component={AllArticles} />
             </Switch>
         }
         {/* Displays our SignUp component as a fallback */}
