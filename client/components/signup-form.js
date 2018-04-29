@@ -21,15 +21,15 @@ const SignupForm = (props) => {
             <h1>Sign Up for Free!</h1>
                 <form onSubmit={handleSubmit} name={name}>
                     <div className="field-wrap">
-                        <label htmlFor="fullName">Full Name<span className="req">*</span></label>
+                        <label id="signLabel" htmlFor="fullName">Full Name<span className="req">*</span></label>
                         <input name="fullName" type="text" />
                     </div>
                     <div className="field-wrap">
-                        <label htmlFor="email">Email Address<span className="req">*</span></label>
+                        <label id="signLabel" htmlFor="email">Email Address<span className="req">*</span></label>
                         <input name="email" type="email" />
                     </div>
                     <div className="field-wrap">
-                        <label htmlFor="password">Set a Password<span className="req">*</span></label>
+                        <label id="signLabel" htmlFor="password">Set a Password<span className="req">*</span></label>
                         <input name="password" type="password" />
                     </div>
                     <div>

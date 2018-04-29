@@ -22,12 +22,12 @@ const LoginForm = (props) => {
                 <form onSubmit={handleSubmit} name={name}>
                     <div className ="top-row">
                     <div className="field-wrap">
-                        <label>Email Address<span className="req">*</span></label>
+                        <label id="signLabel">Email Address<span className="req">*</span></label>
                         <input name="email" type="email"/>
                     </div>
                     
                     <div className="field-wrap">
-                        <label>Password<span className="req">*</span></label>
+                        <label id="signLabel">Password<span className="req">*</span></label>
                         <input name="password" type="password"/>
                     </div>
                     
