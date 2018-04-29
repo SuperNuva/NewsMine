@@ -1,21 +1,237 @@
 body {
-  font-family: sans-serif;
+  /* background:  lightslategray; */
+  /* background-image: url('https://wallpapertag.com/wallpaper/full/d/f/b/302800-free-download-white-texture-background-3000x2000-full-hd.jpg'); */
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  background: rgba(76, 175, 80, 0.3);
 }
 
-a {
+.form {
+  background:rgba( #13232f,.9);
+  padding: 40px;
+  max-width:600px;
+  margin:40px auto;
+  border-radius:4px;
+  box-shadow:0 4px 10px 4px rgba( #13232f,.3);
+}
+
+.tab-group {
+  list-style:none;
+  padding:0;
+  margin:0 0 40px 0;
+}
+
+.tab-group:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+.form li #a {
+    display:block;
+    text-decoration:none;
+    padding:15px;
+    background:rgba(#a0b3b0,.25);
+    color:darkblue;
+    font-size:20px;
+    float:left;
+    width:50%;
+    text-align:center;
+    cursor:pointer;
+    transition:.5s ease;
+}
+.form li #a:hover {
+    color: white;
+  }
+
+#login h1 {
+  text-align:center;
+  color: black;
+  font-weight:300;
+  margin:0 0 40px;
+}
+
+
+#signLabel {
+  position:absolute;
+  transform:translateY(6px);
+  left:250px;
+  color:rgba(#ffffff,.5);
+  transition:all 0.25s ease;
+  /* -webkit-backface-visibility: hidden; */
+  pointer-events: none;
+  font-size:22px;
+}
+#signLabel .req {
+  margin:2px;
+  color:darkblue;
+}
+
+
+#signLabel .active {
+  transform:translateY(50px);
+  left:2px;
+  font-size:14px;
+}
+
+#signLabel .active .req {
+  opacity:0;
+}
+
+#signLabel.highlight {
+	color:#ffffff;
+}
+
+input {
+  font-size:22px;
+  display:block;
+  width:100%;
+  height:100%;
+  padding:5px 10px;
+  background:none;
+  background-image:none;
+  border:1px solid darkblue;
+  color:darkblue;
+  border-radius:0;
+  transition:border-color .25s ease, box-shadow .25s ease;
+}
+:focus {
+  outline:0;
+  border-color:white
+}
+
+textarea {
+  border:2px solid #a0b3b0;
+  resize: vertical;
+}
+
+.field-wrap {
+  /* position:relative; */
+  margin-bottom:40px;
+}
+
+
+.button {
+  border:0;
+  outline:none;
+  border-radius:0;
+  padding:15px 0;
+  font-size:2rem;
+  font-weight:500;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  background: darkcyan;
+  color:#ffffff;
+  transition:all.5s ease;
+  -webkit-appearance: none;
+}
+.button:hover {
+  background:darkblue;
+}
+
+.button-block {
+  display:block;
+  width:100%;
+}
+  
+.forgot {
+  margin-top:20px;
+  text-align:center;
+}
+
+#choiceLabel {
+  font-size: 20px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.saveButton {
+  position: absolute;
+  width: 10%;
+  left: 42%;
+  border:0;
+  outline:none;
+  border-radius:0;
+  padding:15px 0;
+  font-size:1.5rem;
+  font-weight:300;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  background: darkcyan;
+  color:#ffffff;
+  transition:all.5s ease;
+  -webkit-appearance: none;
+  cursor: pointer;
+  margin: 20px
+}
+.saveButton:hover {
+  background:darkblue;
+}
+
+select, textarea {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 15px;
+  color: maroon;
+  background-color: lightgoldenrodyellow;
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+#nav {
+  float: top;
+}
+
+.navLink {
+  display: inline;
+  color: darkblue;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 20px
+}
+
+/* Change the link color to #111 (black) on hover */
+.navLink:hover {
+    background-color: lightgoldenrodyellow;
+}
+
+#userHome {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color: darkgreen
+}
+
+.logo {
+  display: block;
+  color: purple;
   text-decoration: none;
 }
 
-label {
-  display: block;
+#icon {
+  padding: 14px 16px;
 }
 
-nav a {
-  display: inline-block;
-  margin: 1em;
+.newsButton {
+  border-radius:0;
+  padding:15px 15px;
+  margin: 15px 15px;
+  font-size:1rem;
+  font-weight:300;
+  cursor: pointer;
 }
 
-form div {
-  margin: 1em;
-  display: inline-block;
+.articles img {
+  height: 150px;
+}
+
+.articles {
+  font-size: 15px;
+  padding: 10px;
 }

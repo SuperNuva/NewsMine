@@ -69,42 +69,49 @@ class ChoiceForm extends Component {
         console.log("STATE!!", this.state)
         console.log("PROPS!!", this.props)
         return(
-            <div>
-                <div>{this.state.message}</div>
+            <div className="form">
+                <div className="alert">{this.state.message}</div>
                 <form onSubmit={this.handleSubmit}>
-                    <label>
-                        Select a country  
-                        <select name='country' value={this.state.country} onChange={this.handleSelectChange}>
-                            <option value="au">Australia</option>
-                            <option value="br">Brazil</option>
-                            <option value="ca">Canada</option>
-                            <option value="cn">China</option>
-                            <option value="de">Germany</option>
-                            <option value="in">India</option>
-                            <option value="kr">Korea, Republic of</option>
-                            <option value="za">South Africa</option>
-                            <option value="uk">United Kingdom</option>
-                            <option value="us">United States of America</option>
-                        </select>
-                    </label>
-                    <br />
-                    <label>
-                        select your categories
-                        <select multiple={true} value={this.state.categories} onChange={this.handleMultipleChange}>
-                        {
-                            ['business', 'entertainment', 'health', 'science', 'sports', 'technology'].map(category => {
-                                return (
-                                    <option key={category} value={category}>{category}</option>
-                                )
-                            })
-                        }
-                        </select>
-                    </label>
-                    <label>What do you care about the most?
-                        <textarea value={this.state.keywords} onChange={this.handleTextChange} name='keywords'/>
-                    </label>
-                    <br />
-                    <button type="submit">Save</button>
+                    <div className="select-style">
+                        <label id="choiceLabel">
+                            Select a Country  
+                            <select className="select" name='country' value={this.state.country} onChange={this.handleSelectChange}>
+                                <option value="au">Australia</option>
+                                <option value="br">Brazil</option>
+                                <option value="ca">Canada</option>
+                                <option value="cn">China</option>
+                                <option value="de">Germany</option>
+                                <option value="in">India</option>
+                                <option value="kr">Korea, Republic of</option>
+                                <option value="za">South Africa</option>
+                                <option value="gb">United Kingdom</option>
+                                <option value="us">United States of America</option>
+                            </select>
+                        </label>
+                    </div>
+                        <br />
+                    <div>
+                        <label id="choiceLabel">
+                            Choose News Categories
+                            <select className="select" multiple={true} value={this.state.categories} onChange={this.handleMultipleChange}>
+                            {
+                                ['business', 'entertainment', 'health', 'science', 'sports', 'technology'].map(category => {
+                                    return (
+                                        <option key={category} value={category}>{category}</option>
+                                    )
+                                })
+                            }
+                            </select>
+                        </label>
+                    </div>
+                        <br />
+                    <div>
+                        <label id="choiceLabel">What's a topic you want to read about?
+                            <textarea value={this.state.keywords} onChange={this.handleTextChange} name='keywords'/>
+                        </label>
+                    </div>
+                        <br />
+                    <button className="saveButton" type="submit">Save</button>
                 </form>
             </div>
         )

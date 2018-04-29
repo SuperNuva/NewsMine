@@ -11,25 +11,25 @@ const SignupForm = (props) => {
   const {name, handleSubmit, error} = props
 
   return (
-    <div>
+    <div className="form">
         <ul className="tab-group">
-            <li className="tab active"><Link to="/signup">Sign Up</Link></li>
-            <li className="tab"><Link to="/login">Log In</Link></li>
+            <li className="tab active"><Link to="/signup" id="a">Sign Up</Link></li>
+            <li className="tab"><Link to="/login" id="a">Log In</Link></li>
         </ul>
         <div className="tab-content">
-            <div id="signup">
-            <h1>Sign Up for Free</h1>
+            <div id="login">
+            <h1>Sign Up for Free!</h1>
                 <form onSubmit={handleSubmit} name={name}>
                     <div className="field-wrap">
-                        <label htmlFor="fullName">Full Name<span className="req">*</span></label>
+                        <label id="signLabel" htmlFor="fullName">Full Name<span className="req">*</span></label>
                         <input name="fullName" type="text" />
                     </div>
                     <div className="field-wrap">
-                        <label htmlFor="email">Email Address<span className="req">*</span></label>
+                        <label id="signLabel" htmlFor="email">Email Address<span className="req">*</span></label>
                         <input name="email" type="email" />
                     </div>
-                    <div>
-                        <label htmlFor="password">Set a Password<span className="req">*</span></label>
+                    <div className="field-wrap">
+                        <label id="signLabel" htmlFor="password">Set a Password<span className="req">*</span></label>
                         <input name="password" type="password" />
                     </div>
                     <div>

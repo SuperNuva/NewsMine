@@ -9,8 +9,8 @@ import {UserArticles} from '../components'
 export const UserHome = (props) => {
   const {email, name} = props
   return (
-    <div>
-      <h3>Hello, {name}</h3>
+    <div id="userHome">
+      <h3>Hello, {name} ...</h3>
       <p>Here's the news based on your preferences</p>
       <UserArticles />
     </div>
