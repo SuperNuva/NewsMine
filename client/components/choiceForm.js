@@ -3,13 +3,14 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import axios from "axios";
 
-export class ChoiceForm extends Component {
+class ChoiceForm extends Component {
     constructor(props){
         super(props)
         this.state = {
             country : '',
             categories: [],
             keywords: [],
+            message: ''
         }
         this.handleSelectChange = this.handleSelectChange.bind(this)
         this.handleMultipleChange = this.handleMultipleChange.bind(this)
@@ -19,13 +20,14 @@ export class ChoiceForm extends Component {
 
 
     submitChoices(choices) {
-        axios.post('/api/choices/users/:userId', choices)
+        axios.post('/api/choices/:id', choices)
             .then(res => res.data)
             .then(choices => {
                 this.setState({
                     country: choices.country,
                     categories: choices.categories,
-                    keywords: choices.keywords
+                    keywords: choices.keywords,
+                    message: 'Your choices are saved successfully!'
                 })
             })
             .catch(console.error)
@@ -56,15 +58,19 @@ export class ChoiceForm extends Component {
         const choices = {
             country: this.state.country,
             categories: this.state.categories,
-            keywords: this.state.keywords
+            keywords: this.state.keywords,
+            userId: this.props.user.id
         }
         this.submitChoices(choices)
+
     }
 
     render() {
         console.log("STATE!!", this.state)
+        console.log("PROPS!!", this.props)
         return(
             <div>
+                <div>{this.state.message}</div>
                 <form onSubmit={this.handleSubmit}>
                     <label>
                         Select a country  
@@ -104,3 +110,11 @@ export class ChoiceForm extends Component {
         )
     }
 }
+
+const mapState = state => {
+    return {
+        user: state.user
+    }
+}
+
+export default connect(mapState)(ChoiceForm)
