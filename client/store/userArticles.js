@@ -40,6 +40,7 @@ export const fetchArticlesByCategory = (category, country) => {
     }
 }
 
+
 //Reducer
 export function articlesByCatReducer(articlesByCategory=[], action) {
     switch(action.type) {
