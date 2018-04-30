@@ -97,7 +97,7 @@ class ChoiceForm extends Component {
                             Choose News Categories
                             <select className="select" multiple={true} value={this.state.categories} onChange={this.handleMultipleChange}>
                             {
-                                ['business', 'entertainment', 'health', 'science', 'sports', 'technology'].map(category => {
+                                ['Business', 'Entertainment', 'Health', 'Science', 'Sports', 'Technology'].map(category => {
                                     return (
                                         <option key={category} value={category}>{category}</option>
                                     )

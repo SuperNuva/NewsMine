@@ -35,7 +35,7 @@ const SignupForm = (props) => {
                     <div>
                         <button type="submit" className="button button-block">Get Started</button>
                     </div>
-                        {error && error.response && <div> {error.response.data} </div>}
+                        {error && error.response && <div style={{color:'red'}}> {error.response.data} </div>}
                 </form>
             </div>
         </div>

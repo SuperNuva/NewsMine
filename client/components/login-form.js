@@ -37,7 +37,7 @@ const LoginForm = (props) => {
                     <div>
                     <button type="submit" className="button button-block">Log In</button>
                     </div>
-                        {error && error.response && <div> {error.response.data} </div>}
+                        {error && error.response && <div style={{color:'red'}}> {error.response.data} </div>}
                 </form>
             </div> 
         </div>
