@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import axios from "axios";
 import { SSL_OP_ALLOW_UNSAFE_LEGACY_RENEGOTIATION } from 'constants';
 
-class ChoiceForm extends Component {
+class UpdateForm extends Component {
     constructor(props){
         super(props)
         this.state = {
@@ -20,8 +20,8 @@ class ChoiceForm extends Component {
     }
 
 
-    submitChoices(choices) {
-        axios.post(`/api/choices/users/${this.props.user.id}`, choices)
+    updateChoices(choices) {
+        axios.put(`/api/choices/users/${this.props.user.id}`, choices)
             .then(res => res.data)
             .then(choices => {
                 this.setState({
@@ -62,7 +62,7 @@ class ChoiceForm extends Component {
             keywords: this.state.keywords,
             userId: this.props.user.id
         }
-        this.submitChoices(choices)
+        this.updateChoices(choices)
 
     }
 
@@ -126,4 +126,4 @@ const mapState = state => {
     }
 }
 
-export default connect(mapState)(ChoiceForm)
+export default connect(mapState)(UpdateForm)
