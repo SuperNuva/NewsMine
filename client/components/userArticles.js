@@ -61,9 +61,17 @@ class UserArticles extends Component {
             {
                 this.state.categories.includes('Business') && <button className="newsButton" onClick={() => {this.props.getArticlesByCategory('Business', this.state.country); this.setState({isCategoryClicked: true, isCountryClicked: false, isKeywordClicked: false})}}>Get Top Headlines in Business</button>
             }
-            {
+            {/*{
                 this.state.keywords[0] && <button className="newsButton" onClick={() => {this.props.getArticlesByKeyword(this.state.keywords[0]); this.setState({isCategoryClicked: false, isCountryClicked: false, isKeywordClicked: true})}}>Get Top Headlines about {this.state.keywords[0]}</button>
-            } 
+            } */}
+
+            {
+                this.state.keywords && this.state.keywords.map(keyword => {
+                    return (
+                        <button className="newsButton" onClick={() => {this.props.getArticlesByKeyword(keyword); this.setState({isCategoryClicked: false, isCountryClicked: false, isKeywordClicked: true})}}>Get Top Headlines about {keyword}</button>
+                    )
+                })
+            }
             
                 {
                     this.state.isCountryClicked &&

@@ -125,5 +125,5 @@ const mapState = state => {
         user: state.user
     }
 }
-
+//have a map dispatch submitChoice to the store
 export default connect(mapState)(ChoiceForm)
