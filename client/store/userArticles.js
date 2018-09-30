@@ -37,11 +37,9 @@ export const fetchArticlesByCategory = (category, country) => {
     return dispatch => {
         axios.get(newsByCategory(category, country))
         .then(response => {
-            console.log("ALL_ARTICLES_BY_CATEGORY", response.data)
             return response.data
             })
         .then(data => {
-            console.log("ARTICLES_ARRAY!!", data.articles)
             return dispatch(getArticlesByCategory(data.articles))
         })
         .catch(console.error)
@@ -63,11 +61,9 @@ export const fetchAllArticles = (country) => {
         axios.get(newsByCountry(country))
             .then(response => 
                 {
-                    console.log("response data!!", response.data)
                     return response.data
                 })
             .then(data => {
-                    console.log("Articles!!", data.articles )
                 return dispatch(getTopArticles(data.articles))
             })
             .catch(console.error)
@@ -76,7 +72,7 @@ export const fetchAllArticles = (country) => {
 
 //Reducer
 export function newsReducer(articles=[], action) {
-    switch(action.type) {
+    switch (action.type) {
         case GET_ALL_ARTICLES:
             articles = action.articles
             return articles
@@ -86,7 +82,7 @@ export function newsReducer(articles=[], action) {
 }
 
 export function articlesByCatReducer(articlesByCategory=[], action) {
-    switch(action.type) {
+    switch (action.type) {
         case GET_ARTICLES_BY_CATEGORY:
             return action.articlesByCategory
         default:
@@ -95,7 +91,7 @@ export function articlesByCatReducer(articlesByCategory=[], action) {
 }
 
 export function articlesByKeyReducer(articlesByKeyword=[], action) {
-    switch(action.type) {
+    switch (action.type) {
         case GET_ARTICLES_BY_KEYWORD:
             return action.articlesByKeyword
         default:

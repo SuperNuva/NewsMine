@@ -11,7 +11,7 @@ class ChoiceForm extends Component {
             country : '',
             categories: [],
             keywords: [],
-            message: ''
+            // message: ''
         }
         this.handleSelectChange = this.handleSelectChange.bind(this)
         this.handleMultipleChange = this.handleMultipleChange.bind(this)
@@ -28,8 +28,10 @@ class ChoiceForm extends Component {
                     country: choices.country,
                     categories: choices.categories,
                     keywords: choices.keywords,
-                    message: 'Your choices are saved successfully!'
+                    // message: 'Your choices are saved successfully!'
                 })
+                alert('Your choices are saved successfully!');
+                this.props.history.push('/home');
             })
             .catch(console.error)
     }
@@ -42,7 +44,7 @@ class ChoiceForm extends Component {
 
     handleMultipleChange(e) {
         this.setState({
-            categories:[].slice.call(e.target.selectedOptions).map(option => {
+            categories: [].slice.call(e.target.selectedOptions).map(option => {
                 return option.value;
             })
         })
@@ -67,14 +69,14 @@ class ChoiceForm extends Component {
     }
 
     render() {
-        return(
+        return (
             <div className="form">
-                <div style={{color: 'green', margin:'10px'}}>{this.state.message}</div>
+                <div style={{color: 'green', margin: '10px'}}>{this.state.message}</div>
                 <form onSubmit={this.handleSubmit}>
                     <div className="select-style">
                         <label id="choiceLabel">
-                            Select a Country  
-                            <select className="select" name='country' value={this.state.country} onChange={this.handleSelectChange}>
+                            Select a Country
+                            <select className="select" name="country" value={this.state.country} onChange={this.handleSelectChange}>
                                 <option default>Select...</option>
                                 <option value="au">Australia</option>
                                 <option value="br">Brazil</option>
@@ -107,7 +109,7 @@ class ChoiceForm extends Component {
                         <br />
                     <div>
                         <label id="choiceLabel">What's a topic you want to read about?
-                            <textarea value={this.state.keywords} onChange={this.handleTextChange} name='keywords'/>
+                            <textarea value={this.state.keywords} onChange={this.handleTextChange} name="keywords" />
                         </label>
                     </div>
                         <br />
