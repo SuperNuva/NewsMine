@@ -64,7 +64,7 @@ class UserArticles extends Component {
             {
                 this.state.keywords && this.state.keywords.map(keyword => {
                     return (
-                        <button className="newsButton" onClick={() => {this.props.getArticlesByKeyword(keyword); this.setState({isCategoryClicked: false, isCountryClicked: false, isKeywordClicked: true})}}>Get Top Headlines about {keyword}</button>
+                        <button className="newsButton" onClick={() => {this.props.getArticlesByKeyword(keyword); this.setState({isCategoryClicked: false, isCountryClicked: false, isKeywordClicked: true})}} key={keyword}>Get Top Headlines about {keyword}</button>
                     )
                 })
             }
