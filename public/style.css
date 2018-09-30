@@ -56,13 +56,13 @@ body {
 
 
 #signLabel {
-  position:absolute;
+  /* position:absolute;
   transform:translateY(6px);
   left:250px;
   color:rgba(#ffffff,.5);
   transition:all 0.25s ease;
-  /* -webkit-backface-visibility: hidden; */
-  pointer-events: none;
+  -webkit-backface-visibility: hidden;
+  pointer-events: none; */
   font-size:22px;
 }
 #signLabel .req {

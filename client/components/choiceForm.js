@@ -67,8 +67,6 @@ class ChoiceForm extends Component {
     }
 
     render() {
-        console.log("STATE!!", this.state)
-        console.log("PROPS!!", this.props)
         return(
             <div className="form">
                 <div style={{color: 'green', margin:'10px'}}>{this.state.message}</div>
