@@ -34,10 +34,6 @@ class UserArticles extends Component {
 
 
     render() {
-        console.log("PROPS!!", this.props)
-        console.log("STATE", this.state)
-        
-
         return (
             <div>
             {
