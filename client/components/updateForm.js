@@ -8,7 +8,7 @@ class UpdateForm extends Component {
     constructor(props){
         super(props)
         this.state = {
-            country : '',
+            country: '',
             categories: [],
             keywords: [],
             message: ''
@@ -67,8 +67,6 @@ class UpdateForm extends Component {
     }
 
     render() {
-        console.log("STATE!!", this.state)
-        console.log("PROPS!!", this.props)
         return(
             <div className="form">
                 <div style={{color: 'green', margin:'10px'}}>{this.state.message}</div>

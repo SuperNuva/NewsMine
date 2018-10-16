@@ -17,7 +17,6 @@ class UserArticles extends Component {
     }
 
     render() {
-        console.log('PROPS!', this.props)
         const country = this.props.country;
         const categories = this.props.categories;
         const keywords = this.props.keywords;
@@ -45,10 +44,6 @@ class UserArticles extends Component {
             {
                 categories.includes('Business') && <button className="newsButton" onClick={() => {this.props.getArticlesByCategory('Business', country); this.setState({isCategoryClicked: true, isCountryClicked: false, isKeywordClicked: false})}}>Get Top Headlines in Business</button>
             }
-            {/*{
-                keywords[0] && <button className="newsButton" onClick={() => {this.props.getArticlesByKeyword(keywords[0]); this.setState({isCategoryClicked: false, isCountryClicked: false, isKeywordClicked: true})}}>Get Top Headlines about {keywords[0]}</button>
-            } */}
-
             {
                 keywords && keywords.map(keyword => {
                     return (

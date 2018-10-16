@@ -24,14 +24,14 @@ export const fetchChoices = (userId) => {
   }
 }
 
-export const addChoices = (choices) => {
+export const addChoices = (choices, props) => {
   return dispatch => {
-    axios.post(`/api/choices/users/${this.props.user.id}`, choices)
+    axios.post(`/api/choices/users/${props.user.id}`, choices)
       .then(res => res.data)
       .then(data => {
         dispatch(setChoices(data));
         alert('Your choices are saved successfully!');
-        this.props.history.push('/home');
+        props.history.push('/home')
       })
   }
 }
@@ -42,7 +42,7 @@ export function choiceReducer(state = {country: '', categories: [], keywords: []
       case GET_CHOICES:
           return action.choices
       case SET_CHOICES:
-          return {...state, country: action.choices.country, categories: action.choices.category, keywords: action.choices.keywords, userdID: action.choices.userID}
+          return {...state, country: action.choices.country, categories: action.choices.categories, keywords: action.choices.keywords, userdID: action.choices.userID}
       default:
           return state
   }
