@@ -1,17 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
-import axios from "axios";
-import { SSL_OP_ALLOW_UNSAFE_LEGACY_RENEGOTIATION } from 'constants';
+import { addChoices } from '../store/form'
 
 class ChoiceForm extends Component {
     constructor(props){
         super(props)
         this.state = {
-            country : '',
+            country: '',
             categories: [],
             keywords: [],
-            // message: ''
         }
         this.handleSelectChange = this.handleSelectChange.bind(this)
         this.handleMultipleChange = this.handleMultipleChange.bind(this)
@@ -19,53 +16,35 @@ class ChoiceForm extends Component {
         this.handleSubmit = this.handleSubmit.bind(this)
     }
 
-
-    submitChoices(choices) {
-        axios.post(`/api/choices/users/${this.props.user.id}`, choices)
-            .then(res => res.data)
-            .then(choices => {
-                this.setState({
-                    country: choices.country,
-                    categories: choices.categories,
-                    keywords: choices.keywords,
-                    // message: 'Your choices are saved successfully!'
-                })
-                alert('Your choices are saved successfully!');
-                this.props.history.push('/home');
-            })
-            .catch(console.error)
-    }
-
-    handleSelectChange(e) {
+    handleSelectChange(evt) {
         this.setState({
-            country: e.target.value,
+            country: evt.target.value,
         })
     }
 
-    handleMultipleChange(e) {
+    handleMultipleChange(evt) {
         this.setState({
-            categories: [].slice.call(e.target.selectedOptions).map(option => {
+            categories: [].slice.call(evt.target.selectedOptions).map(option => {
                 return option.value;
             })
         })
     }
 
-    handleTextChange(e) {
+    handleTextChange(evt) {
         this.setState({
-            keywords: e.target.value.split(',')
+            keywords: evt.target.value.split(',')
         })
     }
 
-    handleSubmit(e) {
-        e.preventDefault();
+    handleSubmit(evt) {
+        evt.preventDefault();
         const choices = {
             country: this.state.country,
             categories: this.state.categories,
             keywords: this.state.keywords,
             userId: this.props.user.id
         }
-        this.submitChoices(choices)
-
+        this.props.addChoices(choices, this.props)
     }
 
     render() {
@@ -94,7 +73,7 @@ class ChoiceForm extends Component {
                         <br />
                     <div>
                         <label id="choiceLabel">
-                            Choose News Categories
+                            Pick Your Categories
                             <select className="select" multiple={true} value={this.state.categories} onChange={this.handleMultipleChange}>
                             {
                                 ['Business', 'Entertainment', 'Health', 'Science', 'Sports', 'Technology'].map(category => {
@@ -108,7 +87,7 @@ class ChoiceForm extends Component {
                     </div>
                         <br />
                     <div>
-                        <label id="choiceLabel">What's a topic you want to read about?
+                        <label id="choiceLabel">Add Your Choice of Keywords
                             <textarea value={this.state.keywords} onChange={this.handleTextChange} name="keywords" />
                         </label>
                     </div>
@@ -125,5 +104,13 @@ const mapState = state => {
         user: state.user
     }
 }
+
+const mapDispatch = dispatch => {
+  return {
+    addChoices: (choices, props) => {
+      dispatch(addChoices(choices, props))
+    }
+  }
+}
 //have a map dispatch submitChoice to the store
-export default connect(mapState)(ChoiceForm)
+export default connect(mapState, mapDispatch)(ChoiceForm)

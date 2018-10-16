@@ -1,12 +1,12 @@
 const router = require('express').Router()
-const { User, Choice } = require('../db/models')
+const { Choice } = require('../db/models')
 module.exports = router
 
-router.get('/', (req, res, next) => {
-    Choice.findAll()
-    .then(choices => res.json(choices))
-    .catch(next)
-})
+// router.get('/', (req, res, next) => {
+//     Choice.findAll()
+//     .then(choices => res.json(choices))
+//     .catch(next)
+// })
 
 router.get('/users/:userId', (req, res, next) => {
     Choice.findOne({
@@ -25,7 +25,7 @@ router.post('/users/:userId', (req, res, next) => {
         }
     })
     .then(choices => res.json(choices))
-    .catch(next)     
+    .catch(next)
 })
 
 router.put('/users/:userId', (req, res, next) => {
@@ -35,5 +35,5 @@ router.put('/users/:userId', (req, res, next) => {
         }
     })
     .then(choices => res.json(choices))
-    .catch(next)     
+    .catch(next)
 })

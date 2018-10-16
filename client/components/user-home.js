@@ -7,7 +7,7 @@ import {UserArticles} from '../components'
  * COMPONENT
  */
 export const UserHome = (props) => {
-  const {email, name} = props
+  const {name} = props
   return (
     <div id="userHome">
       <h3>Hello, {name} ...</h3>
@@ -33,6 +33,5 @@ export default connect(mapState)(UserHome)
  * PROP TYPES
  */
 UserHome.propTypes = {
-  email: PropTypes.string,
   name: PropTypes.string
 }

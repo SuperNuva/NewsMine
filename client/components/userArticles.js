@@ -1,68 +1,51 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchArticlesByCategory, fetchChoices, fetchArticlesByKeyword, fetchAllArticles } from '../store/userArticles'
-import axios from "axios";
-import { Link } from "react-router-dom";
+import { fetchArticlesByCategory, fetchArticlesByKeyword, fetchAllArticles } from '../store/userArticles'
+import { fetchChoices } from '../store/form'
 
 class UserArticles extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            country: '',
-            categories: [],
-            keywords: [],
             isCountryClicked: false,
             isCategoryClicked: false,
             isKeywordClicked: false,
         }
     }
     componentDidMount() {
-        this.getChoices();
+        this.props.getChoices(this.props.user.id);
     }
-    
-
-    getChoices() {
-        axios.get(`/api/choices/users/${this.props.user.id}`)
-            .then(res => res.data)
-            .then(choices => this.setState({
-                country: choices.country,
-                categories: choices.categories,
-                keywords: choices.keywords
-            })
-        )
-    }
-
 
     render() {
+        const country = this.props.country;
+        const categories = this.props.categories;
+        const keywords = this.props.keywords;
+
         return (
             <div>
             {
-                this.state.country && <button className="newsButton" onClick={() => {this.props.getTopArticles(this.state.country); this.setState({isCategoryClicked: false, isCountryClicked: true, isKeywordClicked: false})}}>Get Top Headlines in Your Country</button>
+                country && <button className="newsButton" onClick={() => {this.props.getTopArticles(country); this.setState({isCategoryClicked: false, isCountryClicked: true, isKeywordClicked: false})}}>Get Top Headlines in Your Country</button>
             }
             {
-                this.state.categories.includes('Health') && <button className="newsButton" onClick={() => {this.props.getArticlesByCategory('Health', this.state.country); this.setState({isCategoryClicked: true, isCountryClicked: false, isKeywordClicked: false})}}>Get Top Headlines in Health</button>
+                categories.includes('Health') && <button className="newsButton" onClick={() => {this.props.getArticlesByCategory('Health', country); this.setState({isCategoryClicked: true, isCountryClicked: false, isKeywordClicked: false})}}>Get Top Headlines in Health</button>
             }
             {
-                this.state.categories.includes('Entertainment') && <button className="newsButton" onClick={() => {this.props.getArticlesByCategory('Entertainment', this.state.country); this.setState({isCategoryClicked: true, isCountryClicked: false, isKeywordClicked: false})}}>Get Top Headlines in Entertainment</button>
+                categories.includes('Entertainment') && <button className="newsButton" onClick={() => {this.props.getArticlesByCategory('Entertainment', country); this.setState({isCategoryClicked: true, isCountryClicked: false, isKeywordClicked: false})}}>Get Top Headlines in Entertainment</button>
             }
             {
-                this.state.categories.includes('Technology') && <button className="newsButton" onClick={() => {this.props.getArticlesByCategory('Technology', this.state.country); this.setState({isCategoryClicked: true, isCountryClicked: false, isKeywordClicked: false})}}>Get Top Headlines in Technology</button>
+                categories.includes('Technology') && <button className="newsButton" onClick={() => {this.props.getArticlesByCategory('Technology', country); this.setState({isCategoryClicked: true, isCountryClicked: false, isKeywordClicked: false})}}>Get Top Headlines in Technology</button>
             }
             {
-                this.state.categories.includes('Science') && <button className="newsButton" onClick={() => {this.props.getArticlesByCategory('Science', this.state.country); this.setState({isCategoryClicked: true, isCountryClicked: false, isKeywordClicked: false})}}>Get Top Headlines in Science</button>
+                categories.includes('Science') && <button className="newsButton" onClick={() => {this.props.getArticlesByCategory('Science', country); this.setState({isCategoryClicked: true, isCountryClicked: false, isKeywordClicked: false})}}>Get Top Headlines in Science</button>
             }
             {
-                this.state.categories.includes('Sports') && <button className="newsButton" onClick={() => {this.props.getArticlesByCategory('Sports', this.state.country); this.setState({isCategoryClicked: true, isCountryClicked: false, isKeywordClicked: false})}}>Get Top Headlines in Sports</button>
+                categories.includes('Sports') && <button className="newsButton" onClick={() => {this.props.getArticlesByCategory('Sports', country); this.setState({isCategoryClicked: true, isCountryClicked: false, isKeywordClicked: false})}}>Get Top Headlines in Sports</button>
             }
             {
-                this.state.categories.includes('Business') && <button className="newsButton" onClick={() => {this.props.getArticlesByCategory('Business', this.state.country); this.setState({isCategoryClicked: true, isCountryClicked: false, isKeywordClicked: false})}}>Get Top Headlines in Business</button>
+                categories.includes('Business') && <button className="newsButton" onClick={() => {this.props.getArticlesByCategory('Business', country); this.setState({isCategoryClicked: true, isCountryClicked: false, isKeywordClicked: false})}}>Get Top Headlines in Business</button>
             }
-            {/*{
-                this.state.keywords[0] && <button className="newsButton" onClick={() => {this.props.getArticlesByKeyword(this.state.keywords[0]); this.setState({isCategoryClicked: false, isCountryClicked: false, isKeywordClicked: true})}}>Get Top Headlines about {this.state.keywords[0]}</button>
-            } */}
-
             {
-                this.state.keywords && this.state.keywords.map(keyword => {
+                keywords && keywords.map(keyword => {
                     return (
                         <button className="newsButton" onClick={() => {this.props.getArticlesByKeyword(keyword); this.setState({isCategoryClicked: false, isCountryClicked: false, isKeywordClicked: true})}} key={keyword}>Get Top Headlines about {keyword}</button>
                     )
@@ -139,6 +122,9 @@ class UserArticles extends Component {
 
 const mapState = state => {
     return {
+        country: state.choices.country,
+        categories: state.choices.categories,
+        keywords: state.choices.keywords,
         articles: state.articles,
         articlesByCategory: state.articlesByCategory,
         articlesByKeyword: state.articlesByKeyword,
@@ -148,8 +134,8 @@ const mapState = state => {
 
 const mapDispatch = dispatch => {
     return {
-        getChoices: () => {
-            dispatch(fetchChoices())
+        getChoices: (userID) => {
+            dispatch(fetchChoices(userID))
         },
         getTopArticles: (country) => {
             dispatch(fetchAllArticles(country))

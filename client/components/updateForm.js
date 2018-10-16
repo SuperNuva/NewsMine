@@ -1,14 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
 import axios from "axios";
-import { SSL_OP_ALLOW_UNSAFE_LEGACY_RENEGOTIATION } from 'constants';
 
 class UpdateForm extends Component {
     constructor(props){
         super(props)
         this.state = {
-            country : '',
+            country: '',
             categories: [],
             keywords: [],
             message: ''
@@ -67,8 +65,6 @@ class UpdateForm extends Component {
     }
 
     render() {
-        console.log("STATE!!", this.state)
-        console.log("PROPS!!", this.props)
         return(
             <div className="form">
                 <div style={{color: 'green', margin:'10px'}}>{this.state.message}</div>

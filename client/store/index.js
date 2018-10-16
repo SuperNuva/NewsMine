@@ -3,9 +3,10 @@ import createLogger from 'redux-logger'
 import thunkMiddleware from 'redux-thunk'
 import {composeWithDevTools} from 'redux-devtools-extension'
 import user from './user'
+import { choiceReducer } from './form.js'
 import { articlesByCatReducer, articlesByKeyReducer, newsReducer } from './userArticles';
 
-const reducer = combineReducers({user, articles: newsReducer, articlesByCategory: articlesByCatReducer, articlesByKeyword: articlesByKeyReducer})
+const reducer = combineReducers({user, choices: choiceReducer, articles: newsReducer, articlesByCategory: articlesByCatReducer, articlesByKeyword: articlesByKeyReducer})
 const middleware = composeWithDevTools(applyMiddleware(
   thunkMiddleware,
   createLogger({collapsed: true})

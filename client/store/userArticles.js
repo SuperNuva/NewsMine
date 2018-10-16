@@ -19,7 +19,7 @@ export function getArticlesByKeyword(articlesByKeyword) {
     return {type: GET_ARTICLES_BY_KEYWORD, articlesByKeyword}
 }
 
-//Helper Function
+//Helper Functions
 const newsByCategory = (category, country) => {
     return `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&apiKey=b2d066ad12f9498a978d5ca82f692a55`
 }
@@ -36,14 +36,9 @@ const newsByCountry = (country) => {
 export const fetchArticlesByCategory = (category, country) => {
     return dispatch => {
         axios.get(newsByCategory(category, country))
-        .then(response => {
-            return response.data
-            })
-        .then(data => {
-            return dispatch(getArticlesByCategory(data.articles))
-        })
+        .then(response => response.data)
+        .then(data => dispatch(getArticlesByCategory(data.articles)))
         .catch(console.error)
-        
     }
 }
 
@@ -59,19 +54,14 @@ export const fetchArticlesByKeyword = (keyword) => {
 export const fetchAllArticles = (country) => {
     return dispatch => {
         axios.get(newsByCountry(country))
-            .then(response => 
-                {
-                    return response.data
-                })
-            .then(data => {
-                return dispatch(getTopArticles(data.articles))
-            })
+            .then(response => response.data)
+            .then(data => dispatch(getTopArticles(data.articles)))
             .catch(console.error)
     }
 }
 
 //Reducer
-export function newsReducer(articles=[], action) {
+export function newsReducer(articles = [], action) {
     switch (action.type) {
         case GET_ALL_ARTICLES:
             articles = action.articles
@@ -81,7 +71,7 @@ export function newsReducer(articles=[], action) {
     }
 }
 
-export function articlesByCatReducer(articlesByCategory=[], action) {
+export function articlesByCatReducer(articlesByCategory = [], action) {
     switch (action.type) {
         case GET_ARTICLES_BY_CATEGORY:
             return action.articlesByCategory
@@ -90,7 +80,7 @@ export function articlesByCatReducer(articlesByCategory=[], action) {
     }
 }
 
-export function articlesByKeyReducer(articlesByKeyword=[], action) {
+export function articlesByKeyReducer(articlesByKeyword = [], action) {
     switch (action.type) {
         case GET_ARTICLES_BY_KEYWORD:
             return action.articlesByKeyword
