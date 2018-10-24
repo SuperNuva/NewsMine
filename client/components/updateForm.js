@@ -40,7 +40,7 @@ class UpdateForm extends Component {
 
     handleMultipleChange(e) {
         this.setState({
-            categories:[].slice.call(e.target.selectedOptions).map(option => {
+            categories: [].slice.call(e.target.selectedOptions).map(option => {
                 return option.value;
             })
         })
@@ -65,14 +65,17 @@ class UpdateForm extends Component {
     }
 
     render() {
-        return(
+        return (
             <div className="form">
-                <div style={{color: 'green', margin:'10px'}}>{this.state.message}</div>
+                <div style={{color: 'green', margin: '10px'}}>{this.state.message}</div>
                 <form onSubmit={this.handleSubmit}>
                     <div className="select-style">
+                        <span style={{backgroundColor: 'white'}}> Please fill out the entire form! </span>
+                        <br />
+                        <br />
                         <label id="choiceLabel">
-                            Select a Country  
-                            <select className="select" name='country' value={this.state.country} onChange={this.handleSelectChange}>
+                            Select a Country
+                            <select className="select" name="country" value={this.state.country} onChange={this.handleSelectChange}>
                                 <option default>Select...</option>
                                 <option value="au">Australia</option>
                                 <option value="br">Brazil</option>
