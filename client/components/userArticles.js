@@ -62,7 +62,7 @@ class UserArticles extends Component {
                                 ? <img src='https://s3.ap-south-1.amazonaws.com/iquppo-image-upload/assets/uploads/1515132916591/QW_BB_2002_1_3.png'/>
                                 : <img src={article.urlToImage}/>
                             }
-                            <h3 style={{color: 'maroon'}}>{article.title}, {article.source.name}</h3>
+                            <h3 style={{color: 'darkCyan'}}>{article.title}, {article.source.name}</h3>
                             <p>{article.description}</p>
                             <a className="newsLink" href={article.url}><h4>Read full article...</h4></a>
                         </div>
@@ -80,7 +80,7 @@ class UserArticles extends Component {
                                 ? <img src='https://s3.ap-south-1.amazonaws.com/iquppo-image-upload/assets/uploads/1515132916591/QW_BB_2002_1_3.png'/>
                                 : <img src={article.urlToImage}/>
                             }
-                            <h3>{article.title}</h3>
+                            <h3 style={{color: 'darkCyan'}}>{article.title}</h3>
                             <p>{article.description}</p>
                             {
                                 !article.author
@@ -103,7 +103,7 @@ class UserArticles extends Component {
                                 ? <img src='https://s3.ap-south-1.amazonaws.com/iquppo-image-upload/assets/uploads/1515132916591/QW_BB_2002_1_3.png'/>
                                 : <img src={article.urlToImage}/>
                             }
-                            <h3>{article.title}</h3>
+                            <h3 style={{color: 'darkCyan'}}>{article.title}</h3>
                             <p>{article.description}</p>
                             {
                                 !article.author

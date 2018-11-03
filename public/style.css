@@ -2,7 +2,8 @@ body {
   /* background:  lightslategray; */
   /* background-image: url('https://wallpapertag.com/wallpaper/full/d/f/b/302800-free-download-white-texture-background-3000x2000-full-hd.jpg'); */
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  background: rgba(76, 175, 80, 0.3);
+  /* background: rgba(76, 175, 80, 0.3); */
+  background: black;
 }
 
 .form {
@@ -35,7 +36,8 @@ body {
     text-decoration:none;
     padding:15px;
     background:rgba(#a0b3b0,.25);
-    color:darkblue;
+    /* color:darkblue; */
+    color: whitesmoke;
     font-size:20px;
     float:left;
     width:50%;
@@ -44,12 +46,12 @@ body {
     transition:.5s ease;
 }
 .form li #a:hover {
-    color: white;
+    color: lightblue;
   }
 
 #login h1 {
-  text-align:center;
-  color: black;
+  text-align: center;
+  color: white;
   font-weight:300;
   margin:0 0 40px;
 }
@@ -64,10 +66,12 @@ body {
   -webkit-backface-visibility: hidden;
   pointer-events: none; */
   font-size:22px;
+  color: white;
+  text-transform: uppercase;
 }
 #signLabel .req {
   margin:2px;
-  color:darkblue;
+  color:lightblue;
 }
 
 
@@ -93,8 +97,8 @@ input {
   padding:5px 10px;
   background:none;
   background-image:none;
-  border:1px solid darkblue;
-  color:darkblue;
+  border:1px solid lightblue;
+  color:lightblue;
   border-radius:0;
   transition:border-color .25s ease, box-shadow .25s ease;
 }
@@ -117,19 +121,19 @@ textarea {
 .button {
   border:0;
   outline:none;
-  border-radius:0;
+  border-radius: 10px;
   padding:15px 0;
   font-size:2rem;
   font-weight:500;
   text-transform:uppercase;
   letter-spacing:.1em;
-  background: darkcyan;
-  color:#ffffff;
+  background: lightblue;
+  color:black;
   transition:all.5s ease;
   -webkit-appearance: none;
 }
 .button:hover {
-  background:darkblue;
+  background:darkcyan;
 }
 
 .button-block {
@@ -145,6 +149,7 @@ textarea {
 #choiceLabel {
   font-size: 20px;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color: white;
 }
 
 .saveButton {
@@ -153,28 +158,29 @@ textarea {
   left: 42%;
   border:0;
   outline:none;
-  border-radius:0;
+  border-radius: 10px;
   padding:15px 0;
   font-size:1.5rem;
   font-weight:300;
   text-transform:uppercase;
   letter-spacing:.1em;
-  background: darkcyan;
-  color:#ffffff;
+  background: lightblue;
+  color: black;
   transition:all.5s ease;
   -webkit-appearance: none;
   cursor: pointer;
-  margin: 20px
+  margin: 20px;
 }
 .saveButton:hover {
-  background:darkblue;
+  background:darkcyan;
+  color: white
 }
 
 select, textarea {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-size: 15px;
-  color: maroon;
-  background-color: lightgoldenrodyellow;
+  color: black;
+  background-color: lightblue;
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -186,11 +192,12 @@ select, textarea {
 
 #nav {
   float: top;
+  padding: 0 15px;
 }
 
 .navLink {
   display: inline;
-  color: darkblue;
+  color: white;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -200,18 +207,20 @@ select, textarea {
 
 /* Change the link color to #111 (black) on hover */
 .navLink:hover {
-    background-color: lightgoldenrodyellow;
+    color: darkcyan;
 }
 
 #userHome {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  color: darkgreen
+  color: whitesmoke
 }
 
 .logo {
   display: block;
-  color: purple;
+  color: lightblue;
   text-decoration: none;
+  text-transform: uppercase;
+  padding: 0 15px;
 }
 
 #icon {
@@ -219,12 +228,13 @@ select, textarea {
 }
 
 .newsButton {
-  border-radius:0;
+  border-radius:10px;
   padding:15px 15px;
   margin: 15px 15px;
   font-size:1rem;
   font-weight:300;
   cursor: pointer;
+  background: lightblue
 }
 
 .articles img {
@@ -238,6 +248,10 @@ select, textarea {
 }
 
 .form.prompt {
-  color: green;
-  border: solid black
+  color: white;
+  border: solid blue;
+}
+
+.newsLink {
+  color: lightblue;
 }

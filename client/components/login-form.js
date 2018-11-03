@@ -17,23 +17,20 @@ const LoginForm = (props) => {
             <li className="tab"><Link to="/login" id="a">Log In</Link></li>
         </ul>
         <div className="tab-content">
-            <div id="login">   
+            <div id="login">
                 <h1>Welcome Back!</h1>
                 <form onSubmit={handleSubmit} name={name}>
                     <div className ="top-row">
-                    <div className="field-wrap">
-                        <label id="signLabel">Email Address<span className="req">*</span></label>
-                        <input name="email" type="email"/>
-                    </div>
+                        <div className="field-wrap">
+                            <label id="signLabel">Email Address<span className="req">*</span></label>
+                            <input name="email" type="email" />
+                        </div>
                     
-                    <div className="field-wrap">
-                        <label id="signLabel">Password<span className="req">*</span></label>
-                        <input name="password" type="password"/>
+                        <div className="field-wrap">
+                            <label id="signLabel">Password<span className="req">*</span></label>
+                            <input name="password" type="password" />
+                        </div>
                     </div>
-                    
-                    <p className="forgot"><Link to="#">Forgot Password?</Link></p>
-                    </div>
-                    
                     <div>
                     <button type="submit" className="button button-block">Log In</button>
                     </div>
